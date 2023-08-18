@@ -3,6 +3,7 @@
 body{
      margin:0;
      padding: 0;
+     scroll-behavior: smooth;
 }
 
 img{
@@ -17,40 +18,128 @@ ul{
 #center{
      max-width: 1700px;
      margin: auto;
-     background-color: $sec;
 }
 
-header{
-     display: flex;
-     flex-direction: column;
-     align-items: flex-end;
-     #ppal{
-          width: calc(100% - (64px + 30px));
+@media screen and (min-width: 320px) {     
+     header{
+          background-color: $sec;
+          position: sticky;
+          top:0;
+          transition: padding 0.3s ease, height 0.3s ease;
+          padding: 0 0 2rem;
           display: flex;
-          justify-content: space-between;
-          align-items: center;
-          #imgLogo{
-               margin: auto;
-               height: 100%;
-          }
+          flex-direction: column;
+          align-items: flex-end;
+          #ppal{
+               width: 100%;
+               height: 6.5rem;
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
 
-          #carritoContainer{
-               width: 64px;
-               margin-right: 30px;
+               .hamburger-menu {
+                    position: relative;
+                    
+                    .hamburger-icon {
+                         display: flex;
+                         flex-direction: column;
+                         cursor: pointer;
+
+                         .bar {
+                              width: 30px;
+                              height: 3px;
+                              background-color: #333;
+                              margin: 4px 0;
+                              transition: transform 0.3s ease;
+                         }
+                    }
+                    .menu-items {
+                         list-style: none;
+                         padding: 0;
+                         margin: 0;
+                         position: absolute;
+                         top: 35px;
+                         left: -300px;
+                         width: 250px;
+                         height: 10rem;
+                         background-color: #fff;
+                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                         transition: left 0.3s ease;
+                    }
+                    .menu-items.active {
+                         left: 0;
+                    }
+               
+               }
+
+
+               #imgLogo{
+                    margin: auto;
+                    height: 100%;
+               }
+               
+               #carritoContainer{
+                    width: 64px;
+                    margin-right: 30px;
+               }
+               #imgCarrito{
+                    margin: auto;
+                    width: fit-content;
+                    height: 2rem;
+               }
           }
-          #imgCarrito{
-               margin: auto;
-               width: 2rem;
-               height: 2rem;
+          #desktop{
+               display: none;
           }
      }
-     #desktop{
-          width: 100%;
-          max-width: 1050px;
-          margin: 2rem auto;
-          ul{
+     
+     #main{
+          height: 100rem;
+          
+     }
+}
+
+@media screen and (min-width: 1080px){
+     header{
+          transition: padding 0.3s ease, height 0.3s ease;
+          padding: 0 0 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          #ppal{
+               .hamburger-menu{
+                    display: none;
+               }
+               width: calc(100% - (64px + 30px));
+               height: 6.5rem;
                display: flex;
-               justify-content: space-around;
+               justify-content: space-between;
+               align-items: center;
+               #imgLogo{
+                    margin: auto;
+                    height: 100%;
+               }
+               
+               #carritoContainer{
+                    width: 64px;
+                    margin-right: 30px;
+               }
+               #imgCarrito{
+                    margin: auto;
+                    width: fit-content;
+                    height: 2rem;
+               }
+          }
+          #desktop{
+               width: 100%;
+               max-width: 1050px;
+               margin:auto;
+               display: block;
+               padding: 2rem 0 0;
+               ul{
+                    display: flex;
+                    justify-content: space-around;
+               }
           }
      }
 }
