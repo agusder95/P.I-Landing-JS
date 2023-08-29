@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeShop</title>
+    <link rel="stylesheet" href="assets/CSS/styles.css" />
+  </head>
+  <body>
+    <div id="center">
+      <header>
+        <div id="ppal">
+          <!-- Mobile navBar -->
+          <div class="menuContainer">
+            <div class="hamburger-menu">
+              <div class="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
+              <ul class="menu-items">
+                <li><a href="#">Portada</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Nosotros</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="imgLogo">
+            <img src="./assets/Images/page/Logo.png" alt="Logo" />
+          </div>
+          <div class="menuContainer">
+            <div id="carritoContainer">
+              <div id="imgCarrito">
+                <img
+                  src="./assets/Images/page/shopping-cart.png"
+                  alt="carrito"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop navBar -->
+        <nav id="desktop">
+          <ul>
+            <li>Portada</li>
+            <li>Login</li>
+            <li>Productos</li>
+            <li>Nosotros</li>
+          </ul>
+        </nav>
+      </header>
+      <div id="main">
+        <!-- <button type="button" onclick="cargaData()">carga</button> -->
+        
+        <div id="productos">
+          <div id="categories">
+            <button onclick="changeCategory('all')">todoas</button>
+          </div>
+          <div id="cardsContaier">
+
+          </div>  
+          <!-- <ul>
+            <li>
+              <div class="card">
+                <div class="imageCard">
+                  <div class="imageContainer">
+                    <img
+                      src="./assets/Images/products/Glasses.png"
+                      alt="Glasses"
+                    />
+                  </div>
+                </div>
+                <div class="info">
+                  <h3>Glasses</h3>
+                  <p>$300</p>
+                  <button class="addCard">Comprar</button>
+                </div>
+              </div>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+    <script src="./assets/constants/Products.js"></script>
+  </body>
+</html>
