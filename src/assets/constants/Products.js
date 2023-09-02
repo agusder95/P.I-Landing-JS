@@ -1,32 +1,12 @@
-/* import Awakening from "../Images/products/Heal/Awakening";
-import BurnHeal from "../Images/products/Heal/BurnHeal";
-import FullHeal from "../Images/products/Heal/FullHeal";
-import IceHeal from "../Images/products/Heal/IceHeal";
-import ParalizeHeal from "../Images/products/Heal/ParalizeHeal";
-
-import bike from "../Images/products/Others/bike";
-import Bread from "../Images/products/Others/Bread";
-import Glasses from "../Images/products/Others/Glasses";
-import Rod from "../Images/products/Others/Rod";
-import Ticket from "../Images/products/Others/S.S.Ticket";
-
-import MasterBall from "../Images/products/Pokeballs/MasterBall";
-import PokeBall from "../Images/products/Pokeballs/PokeBall";
-import SuperBall from "../Images/products/Pokeballs/SuperBall";
-
-import hPotion from "../Images/products//Potions/hyper-potion";
-import potion from "../Images/products//Potions/potion";
-import sPotion from "../Images/products//Potions/super-potion"; */
-
-
 const PRODUCTS = {
+  Todos: [],
   Pokeballs: [
     {
       id: 0,
       title: "PokeBall",
       image: "../Images/products/Pokeballs/PokeBall",
       price: 200,
-      stock: 5,
+      stock: 4,
     },
     {
       id: 1,
@@ -141,32 +121,3 @@ const PRODUCTS = {
     },
   ],
 };
-
-
-/* const PRODUCTS = [
-  {
-    id: 0,
-    title: "PokeBall",
-    image: "../Images/products/Pokeballs/PokeBall",
-    price: 200,
-    stock: 5,
-  },
-  {
-    id: 1,
-    title: "MasterBall",
-    image: "../Images/products/Pokeballs/MasterBall",
-    price: 350,
-    stock: 3,
-  },
-  {
-    id: 2,
-    title: "SuperBall",
-    image: "../Images/products/Pokeballs/SuperBall",
-    price: 250,
-    stock: 10,
-  },
-] */
-
-/* const appState = () =>  {
-  console.log("hola")
-} */

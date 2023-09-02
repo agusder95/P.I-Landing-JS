@@ -33,10 +33,20 @@
           <div class="menuContainer">
             <div id="carritoContainer">
               <div id="imgCarrito">
+                <div id="alertDot"></div>
                 <img
                   src="./assets/Images/page/shopping-cart.png"
                   alt="carrito"
                 />
+                <ul id="carrito-items">
+                  <div id="productsCart"></div>
+                  <div class="buttonContainer">
+                    <button id="purchase" onclick="purchaseCart()">
+                      Comprar
+                    </button>
+                    <button id="delete" onclick="rmItemsCart()">Borrar</button>
+                  </div>
+                </ul>
               </div>
             </div>
           </div>
@@ -53,15 +63,9 @@
         </nav>
       </header>
       <div id="main">
-        <!-- <button type="button" onclick="cargaData()">carga</button> -->
-        
         <div id="productos">
-          <div id="categories">
-            <button onclick="changeCategory('all')">todoas</button>
-          </div>
-          <div id="cardsContaier">
-
-          </div>  
+          <div id="categories"></div>
+          <div id="cardsContaier"></div>
           <!-- <ul>
             <li>
               <div class="card">
@@ -83,6 +87,9 @@
           </ul> -->
         </div>
       </div>
+    </div>
+    <div id="modalPurchase">
+      <p>Gracias por su compra</p>
     </div>
     <script src="./main.js"></script>
     <script src="./assets/constants/Products.js"></script>

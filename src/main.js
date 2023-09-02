@@ -37,7 +37,20 @@ hamburgerIcon.addEventListener("click", () => {
   menuItems.classList.toggle("active");
 });
 
-/* ~~~~~~~~~~~ Products ~~~~~~~~~~~ */
+/* ~~~~~~~~~~~ Alert Dot ~~~~~~~~~~~ */
+
+const alertDot = document.getElementById("alertDot");
+
+const activeAlert = () =>{
+  if(arreglo.length === 0){
+    alertDot.style.display="none"
+  }else{
+    alertDot.style.display="block"
+  }
+  /* arreglo.length === 0 ? alertDot.style.display="none" : "block"; */
+}
+
+/* ~~~~~~~~~~~ Products & Buttons categories ~~~~~~~~~~~ */
 const productsContainer = document.getElementById("categories");
 const cardsContaier = document.getElementById("cardsContaier");
 
@@ -48,29 +61,48 @@ const changeCategory = (name) => {
   cargaCards(name);
 };
 
+/* ~~~~~~~~~~~ load category buttons~~~~~~~~~~~ */
+
 const cargaButtons = () => {
   const categories = Object.keys(PRODUCTS);
 
   categories.forEach((item) => {
     const categories = document.createElement("button");
-    categories.onclick = () => changeCategory(item);
+    categories.textContent = `${item}`;
+    item === "Todos"
+      ? (categories.className = "categoriesButton selected")
+      : (categories.className = "categoriesButton");
 
-    categories.innerHTML = `
-      ${item}
-    `;
     productsContainer.appendChild(categories);
+    categories.addEventListener("click", () => {
+      changeCategory(item);
+      const buttons = document.querySelectorAll(".categoriesButton");
+      buttons.forEach((btn) => btn.classList.remove("selected"));
+      categories.classList.add("selected");
+    });
   });
 };
+
+const arreglo = [];
+
+/* ~~~~~~~~~~~ load category cards~~~~~~~~~~~ */
+const arrayCarga = (price, stock) => {
+  arreglo.push({ precio: price, stock: stock });
+  activeAlert()
+};
+
 const cargaCards = (categories) => {
-  if (categories === "all") {
-    for (const name in PRODUCTS) {
-      PRODUCTS[name].map((item) => {
+  if (categories === "Todos") {
+    for (const categoryName in PRODUCTS) {
+      PRODUCTS[categoryName].map((item) => {
         const card = document.createElement("div");
         card.classList.add("card");
 
         card.innerHTML = `
           <h3>${item.title}</h3>
           <p>Precio: ${item.price}</p>
+          
+          <button onclick={arrayCarga(${item.price},${item.stock})}>Comprar</button>
         `;
         cardsContaier.appendChild(card);
       });
@@ -89,7 +121,80 @@ const cargaCards = (categories) => {
   }
 };
 
-window.addEventListener("DOMContentLoaded", cargaButtons);
-window.addEventListener("DOMContentLoaded", () => cargaCards("all"));
+window.addEventListener("DOMContentLoaded", () => {
+  cargaButtons();
+  cargaCards("Todos");
+});
 
-/* ~~~~~~~~~~~ Products ~~~~~~~~~~~ */
+/* ~~~~~~~~~~~ cart ~~~~~~~~~~~ */
+
+const carrito = document.getElementById("carritoContainer");
+const carritoItems = document.getElementById("carrito-items");
+
+carrito.addEventListener("click", () => {
+  carritoItems.classList.toggle("active");
+  addProductsCart();
+});
+
+/* ~~~~~~~~~~~ cartItems ~~~~~~~~~~~ */
+
+/* Crear un boton de "agregar al carrito" en cada tarjeta. guardar elementos seleccionados en un arreglo de objetos. mostrar la informacion de ese arreglo en "productsCart". actualizar dom al desplegar la cortina */
+const productsCart = document.getElementById("productsCart");
+
+const addProductsCart = () => {
+  if (carritoItems.classList.contains("active")) {
+    for (const id in arreglo) {
+      const list = document.createElement("li");
+      list.classList.add("listProduct");
+      list.innerHTML = `
+            <p>Value:${arreglo[id].precio}</p>
+            <p>Stock:${arreglo[id].stock}</p>
+          `;
+      productsCart.appendChild(list);
+      console.log(`ac ${arreglo}`);
+    }
+  } else {
+    while (productsCart.firstChild) {
+      productsCart.removeChild(productsCart.firstChild);
+    }
+    
+  }
+};
+
+
+
+const rmItemsCart = () => {
+  arreglo.length = 0;
+  activeAlert()
+};
+
+/* ~~~~~~~~~~~ Modal ~~~~~~~~~~~ */
+
+const activeModal = document.getElementById("modalPurchase");
+const purchaseCart = () => {
+  if (arreglo.length > 0) {
+    activeModal.classList.add("active");
+    const value = document.createElement("p");
+    var total = 0;
+
+    for (const id in arreglo) {
+      total = total + arreglo[id].precio;
+    }
+    value.innerHTML = `
+      <p>Total de su compra: ${total}</p>
+    `;
+    activeModal.appendChild(value);
+  }
+  arreglo.length = 0
+};
+
+/* ~~~~~~~~~~~ close Modal ~~~~~~~~~~~ */
+
+activeModal.addEventListener("click", () => {
+  activeModal.classList.remove("active");
+  activeAlert()
+  while (activeModal.firstChild) {
+    activeModal.removeChild(activeModal.firstChild);
+  }
+})
+
