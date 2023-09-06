@@ -10,47 +10,54 @@ body {
 }
 
 img {
-  width: 100%;
+  width: auto;
   height: 100%;
 }
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #center {
   max-width: 1700px;
+  width: 100%;
   margin: auto;
 }
 
 @media screen and (min-width: 320px) {
-  #modalPurchase{
+  #modalPurchase {
     display: none;
     width: 20rem;
     height: 16rem;
     border-radius: 10px;
-    border:1px solid grey;
+    border: 1px solid grey;
     background-color: antiquewhite;
   }
 
-  #modalPurchase.active{
-    position: absolute;
-    display: block;
-    top:36%;
+  #modalPurchase.active {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 25%;
   }
 
   header {
     background-color: $sec;
     position: sticky;
     top: 0;
-    transition: padding 0.3s ease, height 0.3s ease;
-    padding: 0 0 2rem;
+    transition: height 0.3s ease;
+    height: 6.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
     #ppal {
       width: 100%;
-      height: 6.5rem;
+      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -81,7 +88,7 @@ ul {
           padding: 0;
           margin: 0;
           position: absolute;
-          top: 100px;
+          top: 70px;
           left: -300px;
           width: 160px;
           height: 15rem;
@@ -99,15 +106,14 @@ ul {
         }
         .menu-items.active {
           left: -24px;
+          top: 70px;
         }
       }
-
       #imgLogo {
+        height: 80%;
         margin: auto;
-        height: auto;
-        max-height: 90%;
+        max-height: 80%;
       }
-
       #carritoContainer {
         width: 100%;
         #imgCarrito {
@@ -115,7 +121,7 @@ ul {
           width: fit-content;
           height: 2rem;
           position: relative;
-          #alertDot{
+          #alertDot {
             display: none;
             position: absolute;
             z-index: 10;
@@ -134,7 +140,6 @@ ul {
           margin: 0;
           position: absolute;
           right: 0px;
-          width: 200px;
           background-color: #fff;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           max-height: 0;
@@ -142,24 +147,38 @@ ul {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          justify-content: space-evenly;
-
-          
-          .productsCart{
-            background-color: red;
+          #productsCart {
+            width: max-content;
+            margin: 0 5px;
+            text-align: center;
+            .listProduct {
+              min-width: 16rem;
+              border: 1px solid #b1b1b1;
+              border-radius: 5px;
+              padding: 0 0.5rem;
+              margin: 0.5rem 0;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .centerImage {
+                width: 3rem;
+                height: 3rem;
+                margin-right: 10px;
+                .ImgProductContainer {
+                  height: 100%;
+                  margin: auto;
+                }
+              }
+            }
+          }
+          #totalAmount{
             width: 100%;
             text-align: center;
-            #listProduct {
-              border: 1px solid #808080;
-              margin-left: 1rem;
-              margin: 0.5rem 1rem;
-            }
-            
           }
-
           .buttonContainer {
             display: flex;
             width: 100%;
+            padding: 0.5rem 0;
             align-items: center;
             justify-content: space-evenly;
             button {
@@ -183,7 +202,7 @@ ul {
           }
         }
         #carrito-items.active {
-          overflow: scroll;
+          overflow-y: auto;
           max-height: 450px;
         }
       }
@@ -192,10 +211,21 @@ ul {
       display: none;
     }
   }
-
+  header.scrolling {
+    height: 3.5rem;
+    #ppal {
+      .hamburger-menu {
+        .menu-items {
+          top: 45px;
+        }
+        .menu-items.active {
+          left: -24px;
+          top: 45px;
+        }
+      }
+    }
+  }
   #main {
-    height: 100rem;
-
     #categories {
       margin: 1rem auto;
       width: 100%;
@@ -207,43 +237,70 @@ ul {
         width: 5rem;
         height: 2rem;
         border-radius: 5px;
-        border:1px solid black;
+        border: 1px solid black;
       }
       .categoriesButton.selected {
         background-color: blueviolet;
       }
     }
-
     #cardsContaier {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-
       .card {
         border: 1px solid salmon;
         margin: 1rem;
-        width: 10rem;
-        height: 13rem;
+        width: 12rem;
+        height: 16rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        .imageCardWrapper {
+          height: 6rem;
+          margin: 1rem 0 0;
+        }
       }
     }
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 768px) {
+  #modalPurchase.active {
+    top: 40%;
+  }
+  header {
+    #carritoContainer {
+      #carrito-items {
+        #productsCart {
+          min-width: 20rem;
+        }
+      }
+    }
+  }
+  #main {
+    #categories {
+      .categoriesButton {
+        width: 6.5rem;
+        height: 3rem;
+      }
+    }
+    #cardsContaier {
+      .card {
+        width: 14rem;
+        height: 18rem;
+        .imageCardWrapper {
+          height: 7rem;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 1080px) {
   header {
-    transition: padding 0.3s ease, height 0.3s ease;
-    padding: 0 0 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    height: 10rem;
     #ppal {
       .menuContainer:nth-child(1) {
         display: none;
@@ -257,10 +314,14 @@ ul {
         margin: auto;
         height: 100%;
       }
-
       #carritoContainer {
         width: 64px;
         margin-right: 30px;
+        #carrito-items {
+          #productsCart {
+            min-width: 23rem;
+          }
+        }
       }
       #imgCarrito {
         margin: auto;
@@ -273,10 +334,41 @@ ul {
       max-width: 1050px;
       margin: auto;
       display: block;
-      padding: 2rem 0 0;
       ul {
         display: flex;
         justify-content: space-around;
+      }
+    }
+  }
+  header.scrolling {
+    height: 4.5rem;
+    #ppal {
+      height: 3rem;
+      .hamburger-menu {
+        .menu-items {
+          top: 45px;
+        }
+        .menu-items.active {
+          left: -24px;
+          top: 45px;
+        }
+      }
+    }
+  }
+  #main {
+    #categories {
+      .categoriesButton {
+        width: 6.5rem;
+        height: 3rem;
+      }
+    }
+    #cardsContaier {
+      .card {
+        width: 17rem;
+        height: 24rem;
+        .imageCardWrapper {
+          height: 9rem;
+        }
       }
     }
   }

@@ -38,15 +38,14 @@
                   src="./assets/Images/page/shopping-cart.png"
                   alt="carrito"
                 />
-                <ul id="carrito-items">
-                  <div id="productsCart"></div>
+                <div id="carrito-items">
+                  <ul id="productsCart"></ul>
+                  <div id="totalAmount"></div>
                   <div class="buttonContainer">
-                    <button id="purchase" onclick="purchaseCart()">
-                      Comprar
-                    </button>
+                    <button id="purchase" onclick="purchaseCart()">Comprar</button>
                     <button id="delete" onclick="rmItemsCart()">Borrar</button>
                   </div>
-                </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -66,32 +65,16 @@
         <div id="productos">
           <div id="categories"></div>
           <div id="cardsContaier"></div>
-          <!-- <ul>
-            <li>
-              <div class="card">
-                <div class="imageCard">
-                  <div class="imageContainer">
-                    <img
-                      src="./assets/Images/products/Glasses.png"
-                      alt="Glasses"
-                    />
-                  </div>
-                </div>
-                <div class="info">
-                  <h3>Glasses</h3>
-                  <p>$300</p>
-                  <button class="addCard">Comprar</button>
-                </div>
-              </div>
-            </li>
-          </ul> -->
+        </div>
+        <div>
+          <p>ghgjgj</p>
         </div>
       </div>
     </div>
     <div id="modalPurchase">
-      <p>Gracias por su compra</p>
+      <p>Gracias por su compra :D</p>
     </div>
-    <script src="./main.js"></script>
-    <script src="./assets/constants/Products.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/Products.js"></script>
   </body>
 </html>
