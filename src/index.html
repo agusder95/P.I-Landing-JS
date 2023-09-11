@@ -33,10 +33,19 @@
           <div class="menuContainer">
             <div id="carritoContainer">
               <div id="imgCarrito">
+                <div id="alertDot"></div>
                 <img
                   src="./assets/Images/page/shopping-cart.png"
                   alt="carrito"
                 />
+                <div id="carrito-items">
+                  <ul id="productsCart"></ul>
+                  <div id="totalAmount"></div>
+                  <div class="buttonContainer">
+                    <button id="purchase" onclick="purchaseCart()">Comprar</button>
+                    <button id="delete" onclick="rmItemsCart()">Borrar</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -53,38 +62,19 @@
         </nav>
       </header>
       <div id="main">
-        <!-- <button type="button" onclick="cargaData()">carga</button> -->
-        
         <div id="productos">
-          <div id="categories">
-            <button onclick="changeCategory('all')">todoas</button>
-          </div>
-          <div id="cardsContaier">
-
-          </div>  
-          <!-- <ul>
-            <li>
-              <div class="card">
-                <div class="imageCard">
-                  <div class="imageContainer">
-                    <img
-                      src="./assets/Images/products/Glasses.png"
-                      alt="Glasses"
-                    />
-                  </div>
-                </div>
-                <div class="info">
-                  <h3>Glasses</h3>
-                  <p>$300</p>
-                  <button class="addCard">Comprar</button>
-                </div>
-              </div>
-            </li>
-          </ul> -->
+          <div id="categories"></div>
+          <div id="cardsContaier"></div>
+        </div>
+        <div>
+          <p>ghgjgj</p>
         </div>
       </div>
     </div>
-    <script src="./main.js"></script>
-    <script src="./assets/constants/Products.js"></script>
+    <div id="modalPurchase">
+      <p>Gracias por su compra :D</p>
+    </div>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/Products.js"></script>
   </body>
 </html>
