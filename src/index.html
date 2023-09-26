@@ -7,68 +7,147 @@
     <link rel="stylesheet" href="assets/CSS/styles.css" />
   </head>
   <body>
-    <div id="center">
-      <header>
-        <div id="ppal">
-          <!-- Mobile navBar -->
-          <div class="menuContainer">
-            <div class="hamburger-menu">
-              <div class="hamburger-icon">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-              </div>
-              <ul class="menu-items">
-                <li><a href="#">Portada</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Nosotros</a></li>
-              </ul>
+    <header>
+      <div id="ppal">
+        <!-- Mobile navBar -->
+        <div class="menuContainer">
+          <div class="hamburger-menu">
+            <div class="hamburger-icon">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
             </div>
+            <ul class="menu-items">
+              <li><a href="#">Portada</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Productos</a></li>
+              <li><a href="#">Nosotros</a></li>
+            </ul>
           </div>
+        </div>
 
-          <div id="imgLogo">
-            <img src="./assets/Images/page/Logo.png" alt="Logo" />
-          </div>
-          <div class="menuContainer">
-            <div id="carritoContainer">
-              <div id="imgCarrito">
-                <div id="alertDot"></div>
-                <img
-                  src="./assets/Images/page/shopping-cart.png"
-                  alt="carrito"
-                />
-                <div id="carrito-items">
-                  <ul id="productsCart"></ul>
-                  <div id="totalAmount"></div>
-                  <div class="buttonContainer">
-                    <button id="purchase" onclick="purchaseCart()">Comprar</button>
-                    <button id="delete" onclick="rmItemsCart()">Borrar</button>
-                  </div>
+        <div id="imgLogo">
+          <img src="./assets/Images/page/Logo.png" alt="Logo" />
+        </div>
+        <div class="menuContainer">
+          <div id="carritoContainer">
+            <div id="imgCarrito">
+              <div id="alertDot"></div>
+              <img src="./assets/Images/page/shopping-cart.png" alt="carrito" />
+              <div id="carrito-items">
+                <ul id="productsCart"></ul>
+                <div id="totalAmount"></div>
+                <div class="buttonContainer">
+                  <button id="purchase" onclick="purchaseCart()">
+                    Comprar
+                  </button>
+                  <button id="delete" onclick="rmItemsCart()">Borrar</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Desktop navBar -->
-        <nav id="desktop">
-          <ul>
-            <li>Portada</li>
-            <li>Login</li>
-            <li>Productos</li>
-            <li>Nosotros</li>
-          </ul>
-        </nav>
-      </header>
+      <!-- Desktop navBar -->
+      <nav id="desktop">
+        <ul>
+          <li>Portada</li>
+          <li>Login</li>
+          <li>Productos</li>
+          <li>Nosotros</li>
+        </ul>
+      </nav>
+    </header>
+    <div id="center">
       <div id="main">
+        <section id="portada">
+          <p>
+            En Pokeshop encontraras todo lo necesario para emprender tu largo
+            viaje y... Atrapalos a todos!!!
+          </p>
+          <div class="prtadaImage">
+            <img src="./assets/Images/page/banner1.png" alt="bannerPortada" />
+          </div>
+        </section>
+
         <div id="productos">
           <div id="categories"></div>
           <div id="cardsContaier"></div>
         </div>
-        <div>
-          <p>ghgjgj</p>
-        </div>
+
+        <section id="login">
+
+          <div class="formContainer">
+            <h2>Login</h2>
+            <form id="loginForm">
+              <div class="dataContainer">
+                <label for="user">User</label>
+                <input type="text" id="user" name="user" />
+              </div>
+              <div class="dataContainer">
+                <label for="pass">Password</label>
+                <input type="password" id="pass" name="pass" />
+              </div>
+              <div class="restaurePass">
+                <a id="btnRemoveUser" href="" target="_self">Volver a registrarse</a>
+              </div>
+              <button type="submit" id="submit">Enviar</button>
+            </form>
+          </div>
+
+          <div class="formContainer">
+            <h2>Registrate</h2>
+            <form id="registerForm">
+              <div class="dataContainer">
+                <label for="fName">Nombre</label>
+                <input 
+                  type="text"
+                  id="fName"
+                  name="fName"
+                  autocomplete="given-name"
+                />
+              </div>
+              <div class="dataContainer">
+                <label for="lName">Apellido</label>
+                <input
+                  type="text"
+                  id="lName"
+                  name="lName"
+                  autocomplete="family-name"
+                />
+              </div>
+              <div class="dataContainer">
+                <label for="email">Mail</label>
+                <input type="email" id="email" name="email" />
+              </div>
+              <div class="dataContainer">
+                <label for="userLog">User</label>
+                <input type="text" id="userLog" name="userLog" />
+              </div>
+              <div class="dataContainer">
+                <label for="passLog">Password</label>
+                <input type="password" id="passLog" name="passLog" />
+              </div>
+              <div class="dataContainer">
+                <label for="ageConfrim">Soy mayor de 18</label>
+                <input type="checkbox" id="ageConfrim" name="ageConfrim" />
+              </div>
+              <button type="submit" id="submit">Enviar</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="aboutUs">
+          <h2>Quienes Somos</h2>
+          <p>
+            Somos una pequeña tienda ubicada en pueblo paleta. Nos enorgullece
+            ofrecer productos auténticos para seguir creciendo y evolucionando.
+            Queremos ser tu destino confiable para todo lo relacionado con
+            Pokémon, proporcionándote productos de primera calidad y exclusivos
+            que te permitan vivir tu pasión por este increíble universo.
+          </p>
+        </section>
       </div>
     </div>
     <div id="modalPurchase">

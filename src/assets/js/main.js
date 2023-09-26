@@ -4,16 +4,16 @@ const menuItems = document.querySelector(".menu-items");
 /* ~~~~~~~~~~~ reduce header while scroll ~~~~~~~~~~~ */
 window.addEventListener("scroll", () => {
   var header = document.querySelector("header");
-  if(window.scrollY > 15 ){
-    setTimeout(()=>{
-      header.classList.add("scrolling")
-    },300)
-  }else{
-    setTimeout(()=>{
-      header.classList.remove("scrolling")
-    },300)
+  if (window.scrollY > 15) {
+    setTimeout(() => {
+      header.classList.add("scrolling");
+    }, 300);
+  } else {
+    setTimeout(() => {
+      header.classList.remove("scrolling");
+    }, 300);
   }
-})
+});
 
 /* ~~~~~~~~~~~ Menu hamburger ~~~~~~~~~~~ */
 
@@ -170,14 +170,14 @@ const addProductsCart = () => {
   const totalAmount = document.getElementById("totalAmount");
 
   if (carritoItems.classList.contains("active")) {
-    var total = 0
-    var totProducts= 0
+    var total = 0;
+    var totProducts = 0;
     for (const id in dataPurchase) {
-      total += (dataPurchase[id].precio * dataPurchase[id].amount)
-      totProducts += dataPurchase[id].amount
+      total += dataPurchase[id].precio * dataPurchase[id].amount;
+      totProducts += dataPurchase[id].amount;
       const list = document.createElement("li");
       list.classList.add("listProduct");
-      
+
       list.innerHTML = `
         <div class="centerImage">
           <div class="ImgProductContainer">
@@ -190,14 +190,14 @@ const addProductsCart = () => {
       `;
       productsCart.appendChild(list);
     }
-    const totalCart = document.createElement('p')
-    totalCart.innerHTML = `Total: $${total} | Cantidad: ${totProducts}`
+    const totalCart = document.createElement("p");
+    totalCart.innerHTML = `Total: $${total} | Cantidad: ${totProducts}`;
     totalAmount.appendChild(totalCart);
   } else {
     while (productsCart.firstChild) {
       productsCart.removeChild(productsCart.firstChild);
     }
-    while(totalAmount.firstChild){
+    while (totalAmount.firstChild) {
       totalAmount.removeChild(totalAmount.firstChild);
     }
   }
@@ -234,9 +234,9 @@ const purchaseCart = () => {
         return;
       }
 
-      total = total + (dataPurchase[id].precio * dataPurchase[id].amount);
+      total = total + dataPurchase[id].precio * dataPurchase[id].amount;
       value.innerHTML = `Total: ${total}`;
-      text.innerHTML = `Revise su mail para continuar con el pago`
+      text.innerHTML = `Revise su mail para continuar con el pago`;
       activeModal.appendChild(value);
       activeModal.appendChild(text);
     }
@@ -251,5 +251,85 @@ activeModal.addEventListener("click", () => {
   activeAlert();
   while (activeModal.firstChild) {
     activeModal.removeChild(activeModal.firstChild);
+  }
+});
+
+/* ~~~~~~~~~~~ L.S. Data User~~~~~~~~~~~ */
+const btnRemoveUser = document.getElementById("btnRemoveUser");
+btnRemoveUser.addEventListener("click", () => {
+  localStorage.removeItem("login");
+});
+
+const accountLStorage = (user, pass) => {
+  const arrayLogin = {
+    username: user,
+    password: pass,
+  };
+
+  const jsonLogin = JSON.stringify(arrayLogin);
+  localStorage.setItem("login", jsonLogin);
+};
+
+/* ~~~~~~~~~~~ form Login~~~~~~~~~~~ */
+document.getElementById("loginForm").addEventListener("submit", (e) => {
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
+  const storedLogin = localStorage.getItem("login");
+  const login = JSON.parse(storedLogin);
+
+  if (user && pass) {
+    if (login) {
+      if (user === login.username && pass === login.password) {
+        alert("atroden");
+      } else {
+        alert("error pass or login");
+      }
+    } else {
+      alert("no user registered");
+    }
+  } else {
+    alert("complete login");
+  }
+});
+
+/* ~~~~~~~~~~~ form Register~~~~~~~~~~~ */
+document.getElementById("registerForm").addEventListener("submit", (e) => {
+  const fName = document.getElementById("fName").value;
+  const lName = document.getElementById("lName").value;
+  const email = document.getElementById("email").value;
+  const userLog = document.getElementById("userLog").value;
+  const passLog = document.getElementById("passLog").value;
+  const ageConfrim = document.getElementById("ageConfrim").checked;
+  if (fName && lName && email && passLog && userLog && ageConfrim) {
+    accountLStorage(userLog, passLog);
+    alert("login successful");
+    console.log(`${fName} ${lName} ${email} ${userLog} ${passLog} ${ageConfrim}`);
+  } else {
+    console.log(`${fName} ${lName} ${email} ${userLog} ${passLog} ${ageConfrim}`);
+    if (!fName) {
+      alert("complete name");
+      return;
+    }
+    if (!lName) {
+      alert("complete last name");
+      return;
+    }
+    if (!email) {
+      alert("complete email");
+      return;
+    }
+    if (!userLog) {
+      alert("complete user");
+      return;
+    }
+    
+    if (!passLog) {
+      alert("complete pass");
+      return;
+    }
+    if (!ageConfrim) {
+      alert("Check your age");
+      return;
+    }
   }
 });
