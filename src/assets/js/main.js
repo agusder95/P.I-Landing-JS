@@ -139,11 +139,6 @@ const cargaCards = (categories) => {
   }
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-  activeAlert();
-  cargaButtons();
-  cargaCards("Todos");
-});
 
 /* ~~~~~~~~~~~ cart ~~~~~~~~~~~ */
 
@@ -168,7 +163,7 @@ const addProductsCart = () => {
   const dataLS = localStorage.getItem("productsCart");
   const dataPurchase = JSON.parse(dataLS);
   const totalAmount = document.getElementById("totalAmount");
-
+  
   if (carritoItems.classList.contains("active")) {
     var total = 0;
     var totProducts = 0;
@@ -177,16 +172,16 @@ const addProductsCart = () => {
       totProducts += dataPurchase[id].amount;
       const list = document.createElement("li");
       list.classList.add("listProduct");
-
+      
       list.innerHTML = `
-        <div class="centerImage">
-          <div class="ImgProductContainer">
-            <img src="${dataPurchase[id].img}" alt = "${dataPurchase[id].title}" />
-          </div>
-        </div>
-        <p>${dataPurchase[id].title}</p>
-        <p>$${dataPurchase[id].precio}</p>
-        <p>x${dataPurchase[id].amount}</p>
+      <div class="centerImage">
+      <div class="ImgProductContainer">
+      <img src="${dataPurchase[id].img}" alt = "${dataPurchase[id].title}" />
+      </div>
+      </div>
+      <p>${dataPurchase[id].title}</p>
+      <p>$${dataPurchase[id].precio}</p>
+      <p>x${dataPurchase[id].amount}</p>
       `;
       productsCart.appendChild(list);
     }
@@ -218,30 +213,45 @@ const activeModal = document.getElementById("modalPurchase");
 const purchaseCart = () => {
   const dataLS = localStorage.getItem("productsCart");
   const dataPurchase = JSON.parse(dataLS);
+  const storedLogin = localStorage.getItem("login");
+  const login = JSON.parse(storedLogin);
+
   if (dataPurchase.length > 0) {
     activeModal.classList.add("active");
+    const text1 = document.createElement("p");
     const value = document.createElement("p");
     const text = document.createElement("p");
     var total = 0;
-
-    for (const id in dataPurchase) {
-      if (dataPurchase[id].amount > dataPurchase[id].stock) {
-        value.innerHTML = `
+    
+    if(login!==null && login.logedIn){
+      for (const id in dataPurchase) {
+        if (dataPurchase[id].amount > dataPurchase[id].stock) {
+          value.innerHTML = `
           <p>Compra ${dataPurchase[id].title} maxima ${dataPurchase[id].stock}</p>
-        `;
+          `;
+          activeModal.appendChild(value);
+          rmProducts();
+          return;
+        }
+        
+        total = total + dataPurchase[id].precio * dataPurchase[id].amount;
+        text1.innerHTML = `Gracias por su compra :D`
+        value.innerHTML = `Total: ${total}`;
+        text.innerHTML = `Revise su mail para continuar con el pago`;
+        activeModal.appendChild(text1);
         activeModal.appendChild(value);
-        rmProducts();
-        return;
+        activeModal.appendChild(text);
       }
+      rmProducts();
 
-      total = total + dataPurchase[id].precio * dataPurchase[id].amount;
-      value.innerHTML = `Total: ${total}`;
-      text.innerHTML = `Revise su mail para continuar con el pago`;
-      activeModal.appendChild(value);
-      activeModal.appendChild(text);
+    }else{
+      text.innerHTML = `Primero debe logearse / registrarse`
+      activeModal.appendChild(text)
+      window.location.href = "#login";
     }
+
   }
-  rmProducts();
+  
 };
 
 /* ~~~~~~~~~~~ close Modal ~~~~~~~~~~~ */
@@ -256,7 +266,9 @@ activeModal.addEventListener("click", () => {
 
 /* ~~~~~~~~~~~ L.S. Data User~~~~~~~~~~~ */
 const btnRemoveUser = document.getElementById("btnRemoveUser");
-btnRemoveUser.addEventListener("click", () => {
+btnRemoveUser.addEventListener("click", (e) => {
+  e.preventDefault()
+  window.location.href = "#registerForm";
   localStorage.removeItem("login");
 });
 
@@ -264,8 +276,9 @@ const accountLStorage = (user, pass) => {
   const arrayLogin = {
     username: user,
     password: pass,
+    logedIn: true,
   };
-
+  
   const jsonLogin = JSON.stringify(arrayLogin);
   localStorage.setItem("login", jsonLogin);
 };
@@ -276,11 +289,15 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   const pass = document.getElementById("pass").value;
   const storedLogin = localStorage.getItem("login");
   const login = JSON.parse(storedLogin);
-
+  
   if (user && pass) {
     if (login) {
       if (user === login.username && pass === login.password) {
         alert("atroden");
+        window.location.href = "#center";
+        login.logedIn = true;
+        localStorage.setItem("login", JSON.stringify(login))
+        isLogin()
       } else {
         alert("error pass or login");
       }
@@ -300,12 +317,14 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   const userLog = document.getElementById("userLog").value;
   const passLog = document.getElementById("passLog").value;
   const ageConfrim = document.getElementById("ageConfrim").checked;
+  
   if (fName && lName && email && passLog && userLog && ageConfrim) {
     accountLStorage(userLog, passLog);
     alert("login successful");
-    console.log(`${fName} ${lName} ${email} ${userLog} ${passLog} ${ageConfrim}`);
+    isLogin()
+    window.location.href = "#center";
   } else {
-    console.log(`${fName} ${lName} ${email} ${userLog} ${passLog} ${ageConfrim}`);
+    e.preventDefault();
     if (!fName) {
       alert("complete name");
       return;
@@ -332,4 +351,71 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
       return;
     }
   }
+});
+
+
+/* ~~~~~~~~~~~ Login Button~~~~~~~~~~~ */
+const loginRegister = document.getElementById("loginRegister");
+
+const isLogin = () =>{
+  const storedLogin = localStorage.getItem("login");
+  const login = JSON.parse(storedLogin);
+
+  if(login!==null){
+    if (login.logedIn){
+      loginRegister.innerHTML="Logout"
+    }else{
+      loginRegister.innerHTML="Login"
+    }
+  }else{
+    loginRegister.innerHTML="Login"
+  }
+  
+}
+
+loginRegister.addEventListener("click", () => {
+  const storedLogin = localStorage.getItem("login");
+  const login = JSON.parse(storedLogin);
+  if(login!==null){
+    if (login.logedIn){
+      login.logedIn = false;
+      localStorage.setItem("login", JSON.stringify(login))
+      isLogin()
+    }else{
+      window.location.href = "#login";
+    }
+  }else{
+    window.location.href = "#login";
+  }
+});
+
+/* const loginRegister = document.getElementById("loginRegister");
+loginRegister.addEventListener("click", () => {
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
+  const storedLogin = localStorage.getItem("login");
+  const login = JSON.parse(storedLogin);
+  
+  if (user && pass) {
+    if (login) {
+      if (user === login.username && pass === login.password) {
+        window.location.href = "index.html";
+      } else {
+        alert("error pass or login");
+      }
+    } else {
+      alert("no user registered");
+    }
+  } else {
+    alert("complete login");
+  }
+}); */
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  activeAlert();
+  cargaButtons();
+  isLogin()
+  cargaCards("Todos");
 });
