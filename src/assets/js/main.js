@@ -113,7 +113,7 @@ const cargaCards = (categories) => {
             <img src="${item.image}" alt = "${item.title}" />
           </div>
           <h3>${item.title}</h3>
-          <p>Precio: ${item.price}</p>
+          <p>$ ${item.price}</p>
           
           <button  onclick="arrayCarga(${item.price}, ${item.stock}, '${item.title}', '${item.image}')">Comprar</button>
         `;
@@ -139,7 +139,6 @@ const cargaCards = (categories) => {
   }
 };
 
-
 /* ~~~~~~~~~~~ cart ~~~~~~~~~~~ */
 
 const carrito = document.getElementById("carritoContainer");
@@ -148,6 +147,7 @@ const carritoItems = document.getElementById("carrito-items");
 carrito.addEventListener("click", () => {
   const dataLS = localStorage.getItem("productsCart");
   const dataPurchase = JSON.parse(dataLS);
+
   if (dataPurchase) {
     carritoItems.classList.toggle("active");
   } else {
@@ -163,7 +163,7 @@ const addProductsCart = () => {
   const dataLS = localStorage.getItem("productsCart");
   const dataPurchase = JSON.parse(dataLS);
   const totalAmount = document.getElementById("totalAmount");
-  
+
   if (carritoItems.classList.contains("active")) {
     var total = 0;
     var totProducts = 0;
@@ -172,7 +172,7 @@ const addProductsCart = () => {
       totProducts += dataPurchase[id].amount;
       const list = document.createElement("li");
       list.classList.add("listProduct");
-      
+
       list.innerHTML = `
       <div class="centerImage">
       <div class="ImgProductContainer">
@@ -222,8 +222,8 @@ const purchaseCart = () => {
     const value = document.createElement("p");
     const text = document.createElement("p");
     var total = 0;
-    
-    if(login!==null && login.logedIn){
+
+    if (login !== null && login.logedIn) {
       for (const id in dataPurchase) {
         if (dataPurchase[id].amount > dataPurchase[id].stock) {
           value.innerHTML = `
@@ -233,9 +233,9 @@ const purchaseCart = () => {
           rmProducts();
           return;
         }
-        
+
         total = total + dataPurchase[id].precio * dataPurchase[id].amount;
-        text1.innerHTML = `Gracias por su compra :D`
+        text1.innerHTML = `Gracias por su compra :D`;
         value.innerHTML = `Total: ${total}`;
         text.innerHTML = `Revise su mail para continuar con el pago`;
         activeModal.appendChild(text1);
@@ -243,15 +243,12 @@ const purchaseCart = () => {
         activeModal.appendChild(text);
       }
       rmProducts();
-
-    }else{
-      text.innerHTML = `Primero debe logearse / registrarse`
-      activeModal.appendChild(text)
+    } else {
+      text.innerHTML = `Primero debe logearse / registrarse`;
+      activeModal.appendChild(text);
       window.location.href = "#login";
     }
-
   }
-  
 };
 
 /* ~~~~~~~~~~~ close Modal ~~~~~~~~~~~ */
@@ -267,7 +264,7 @@ activeModal.addEventListener("click", () => {
 /* ~~~~~~~~~~~ L.S. Data User~~~~~~~~~~~ */
 const btnRemoveUser = document.getElementById("btnRemoveUser");
 btnRemoveUser.addEventListener("click", (e) => {
-  e.preventDefault()
+  e.preventDefault();
   window.location.href = "#registerForm";
   localStorage.removeItem("login");
 });
@@ -278,7 +275,7 @@ const accountLStorage = (user, pass) => {
     password: pass,
     logedIn: true,
   };
-  
+
   const jsonLogin = JSON.stringify(arrayLogin);
   localStorage.setItem("login", jsonLogin);
 };
@@ -289,15 +286,15 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   const pass = document.getElementById("pass").value;
   const storedLogin = localStorage.getItem("login");
   const login = JSON.parse(storedLogin);
-  
+
   if (user && pass) {
     if (login) {
       if (user === login.username && pass === login.password) {
         alert("atroden");
         window.location.href = "#center";
         login.logedIn = true;
-        localStorage.setItem("login", JSON.stringify(login))
-        isLogin()
+        localStorage.setItem("login", JSON.stringify(login));
+        isLogin();
       } else {
         alert("error pass or login");
       }
@@ -317,11 +314,11 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   const userLog = document.getElementById("userLog").value;
   const passLog = document.getElementById("passLog").value;
   const ageConfrim = document.getElementById("ageConfrim").checked;
-  
+
   if (fName && lName && email && passLog && userLog && ageConfrim) {
     accountLStorage(userLog, passLog);
     alert("login successful");
-    isLogin()
+    isLogin();
     window.location.href = "#center";
   } else {
     e.preventDefault();
@@ -341,7 +338,7 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
       alert("complete user");
       return;
     }
-    
+
     if (!passLog) {
       alert("complete pass");
       return;
@@ -353,38 +350,36 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   }
 });
 
-
 /* ~~~~~~~~~~~ Login Button~~~~~~~~~~~ */
 const loginRegister = document.getElementById("loginRegister");
 
-const isLogin = () =>{
+const isLogin = () => {
   const storedLogin = localStorage.getItem("login");
   const login = JSON.parse(storedLogin);
 
-  if(login!==null){
-    if (login.logedIn){
-      loginRegister.innerHTML="Logout"
-    }else{
-      loginRegister.innerHTML="Login"
+  if (login !== null) {
+    if (login.logedIn) {
+      loginRegister.innerHTML = "Logout";
+    } else {
+      loginRegister.innerHTML = "Login";
     }
-  }else{
-    loginRegister.innerHTML="Login"
+  } else {
+    loginRegister.innerHTML = "Login";
   }
-  
-}
+};
 
 loginRegister.addEventListener("click", () => {
   const storedLogin = localStorage.getItem("login");
   const login = JSON.parse(storedLogin);
-  if(login!==null){
-    if (login.logedIn){
+  if (login !== null) {
+    if (login.logedIn) {
       login.logedIn = false;
-      localStorage.setItem("login", JSON.stringify(login))
-      isLogin()
-    }else{
+      localStorage.setItem("login", JSON.stringify(login));
+      isLogin();
+    } else {
       window.location.href = "#login";
     }
-  }else{
+  } else {
     window.location.href = "#login";
   }
 });
@@ -411,11 +406,9 @@ loginRegister.addEventListener("click", () => {
   }
 }); */
 
-
-
 window.addEventListener("DOMContentLoaded", () => {
   activeAlert();
   cargaButtons();
-  isLogin()
+  isLogin();
   cargaCards("Todos");
 });
