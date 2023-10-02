@@ -1,5 +1,8 @@
 @import "colors";
 
+* {
+  font-family: "Inclusive Sans", sans-serif;
+}
 body {
   margin: 0;
   padding: 0;
@@ -7,6 +10,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: $main-white;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: $main-Black;
 }
 
 img {
@@ -20,20 +35,29 @@ ul {
   padding: 0;
 }
 
-#center {
+.center {
   max-width: 1700px;
   width: 100%;
   margin: auto;
 }
 
 @media screen and (min-width: 320px) {
+  * {
+    font-size: small;
+  }
   #modalPurchase {
+    box-shadow: 0px 0px 67px 44px rgba(0, 0, 0, 0.42);
+    -webkit-box-shadow: 0px 0px 67px 44px rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 0px 0px 67px 44px rgba(0, 0, 0, 0.42);
     display: none;
     width: 20rem;
     height: 16rem;
     border-radius: 10px;
-    border: 1px solid grey;
-    background-color: antiquewhite;
+    border: 1px solid $grey;
+    background-color: $main-white;
+    overflow-wrap: break-word;
+    text-align: center;
+    padding: 0.5rem;
   }
 
   #modalPurchase.active {
@@ -48,7 +72,7 @@ ul {
 
   header {
     width: 100%;
-    background-color: $sec;
+    background-color: $header;
     position: sticky;
     top: 0;
     transition: height 0.3s ease;
@@ -70,10 +94,19 @@ ul {
         justify-content: flex-start;
         align-items: center;
         flex-grow: 1;
-        &:last-child{
+        &:last-child {
           justify-content: flex-end;
-          margin:0;
+          margin: 0;
         }
+      }
+
+      #loginRegister {
+        width: 5rem;
+        height: 2rem;
+        background-color: $header;
+        background-color: $log-button;
+        color: $main-white;
+        border: none;
       }
       .hamburger-menu {
         position: relative;
@@ -86,7 +119,7 @@ ul {
           .bar {
             width: 30px;
             height: 3px;
-            background-color: #333;
+            background-color: $main-Black;
             margin: 4px 0;
             transition: transform 0.3s ease;
           }
@@ -100,7 +133,7 @@ ul {
           left: -300px;
           width: 160px;
           height: 15rem;
-          background-color: #fff;
+          background-color: $main-white;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           transition: left 0.3s ease-in-out;
           border-radius: 10px;
@@ -114,7 +147,7 @@ ul {
         }
         .menu-items.active {
           left: -24px;
-          top: 70px;
+          top: 61px;
         }
       }
       #imgLogo {
@@ -138,17 +171,17 @@ ul {
             width: 10px;
             height: 10px;
             border-radius: 10px;
-            background-color: red;
+            background-color: $delete;
           }
         }
         #carrito-items {
           overflow: hidden;
           list-style: none;
           padding: 0;
-          margin: .5rem 0 0;
+          margin: 0.5rem 0 0;
           position: absolute;
           right: 0px;
-          background-color: #fff;
+          background-color: $main-white;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           max-height: 0;
           border-radius: 10px;
@@ -161,7 +194,7 @@ ul {
             text-align: center;
             .listProduct {
               min-width: 16rem;
-              border: 1px solid #b1b1b1;
+              border: 1px solid $grey;
               border-radius: 5px;
               padding: 0 0.5rem;
               margin: 0.5rem 0;
@@ -192,8 +225,7 @@ ul {
             button {
               width: 5rem;
               height: 2rem;
-              border-radius: 10px;
-              border: 1px solid black;
+              border-radius: 5px;
             }
             #purchase {
               background-color: $purchase;
@@ -228,7 +260,7 @@ ul {
         }
         .menu-items.active {
           left: -24px;
-          top: 45px;
+          top: 40px;
         }
       }
     }
@@ -245,10 +277,11 @@ ul {
         width: 5rem;
         height: 2rem;
         border-radius: 5px;
-        border: 1px solid black;
+        border: 1px solid $grey;
       }
       .categoriesButton.selected {
-        background-color: blueviolet;
+        background-color: $category-button;
+        color: $main-white;
       }
     }
     #cardsContaier {
@@ -257,8 +290,10 @@ ul {
       justify-content: center;
       align-items: center;
       .card {
-        border: 1px solid salmon;
-        margin: 1rem;
+        border: 1px solid $grey;
+        border-radius: 10px;
+        margin: 0.5rem;
+        padding-bottom: 0.5rem;
         width: 12rem;
         height: 16rem;
         display: flex;
@@ -269,6 +304,15 @@ ul {
           height: 6rem;
           margin: 1rem 0 0;
         }
+        button {
+          width: 5rem;
+          height: 2.5rem;
+          background-color: $card-button;
+          &:active {
+            background-color: $card-button-active;
+            color: $main-white;
+          }
+        }
       }
     }
   }
@@ -277,6 +321,8 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-wrap: break-word;
+    text-align: center;
     p {
       text-align: center;
       line-height: 22px;
@@ -284,7 +330,7 @@ ul {
       margin: 0 1rem;
       position: absolute;
       backdrop-filter: blur(5px);
-      color: whitesmoke;
+      color: $main-white;
       text-indent: 10px;
       z-index: 1;
     }
@@ -319,7 +365,7 @@ ul {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        border: 1px solid black;
+        border: 1px solid $grey;
         border-radius: 15px;
         padding: 10px;
         .dataContainer {
@@ -347,7 +393,7 @@ ul {
             width: 97%;
             font-size: 1rem;
             border-radius: 6px;
-            border: 1px solid black;
+            border: 1px solid $grey;
           }
         }
         .restaurePass {
@@ -357,14 +403,14 @@ ul {
           justify-content: flex-end;
         }
         #submit {
-          background-color: white;
+          background-color: $main-white;
           margin: 1rem 0;
           width: 6rem;
           height: 3rem;
           border-radius: 5px;
-          border: 1px solid black;
+          border: 1px solid $grey;
           &:active {
-            background-color: grey;
+            background-color: $grey;
           }
         }
       }
@@ -381,27 +427,86 @@ ul {
     h2 {
       margin: 1rem 0;
     }
-    p {
-      font-size: x-small;
-      margin: 0 1rem;
+  }
+
+  footer {
+    padding-top: 1rem;
+    color: $main-white;
+    width: 100%;
+    background-color: $category-button;
+    a{
+      color:$header;
+    }
+    .center {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .column{
+        min-width: 20rem;
+        &:last-child{
+          p{
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    li {
+      display: flex;
+      align-items: baseline;
+      a{
+        margin: 1em 0;
+      }
+      .iconFooter {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 1rem;
+        .icon{
+          color:$main-white;
+        }
+      }
     }
   }
 }
 
 @media screen and (min-width: 768px) {
+  * {
+    font-size: medium;
+  }
   #modalPurchase.active {
     top: 40%;
   }
   header {
-    #ppal #imgLogo{
-      height: 80%;
-    }
+    #ppal{
+      #imgLogo {
+        height: 80%;
+      }
+      .hamburger-menu{
+        .menu-items.active{
+          top:67px;
+        }
+      }
+    } 
     #carritoContainer {
       #carrito-items {
         #productsCart {
           min-width: 20rem;
         }
       }
+    }
+  }
+  header.scrolling {
+    #ppal {
+      .hamburger-menu {
+        .menu-items.active {
+          top: 44px;
+        }
+      }
+    }
+  }
+  #portada {
+    p {
+      font-size: larger;
     }
   }
   #main {
@@ -411,8 +516,8 @@ ul {
         height: 3rem;
       }
     }
-    #login{
-      .formContainer{
+    #login {
+      .formContainer {
         width: 22rem;
       }
     }
@@ -423,22 +528,28 @@ ul {
         .imageCardWrapper {
           height: 7rem;
         }
+        button {
+          width: 6rem;
+          height: 3rem;
+        }
       }
     }
   }
 }
 
 @media screen and (min-width: 1080px) {
+  * {
+    font-size: large;
+  }
   header {
     height: 10rem;
     #ppal {
-      .menuContainer{
-        
+      .menuContainer {
         max-width: 13rem;
-        &:last-child{
+        &:last-child {
           justify-content: space-between;
         }
-        &:first-child{
+        &:first-child {
           display: none;
         }
       }
@@ -493,6 +604,12 @@ ul {
       }
     }
   }
+  #portada {
+    p {
+      font-size: xx-large;
+      line-height: 2rem;
+    }
+  }
   #main {
     #categories {
       .categoriesButton {
@@ -502,8 +619,9 @@ ul {
     }
     #cardsContaier {
       .card {
-        width: 17rem;
-        height: 24rem;
+        width: 15rem;
+        height: 20rem;
+        margin: 1rem;
         .imageCardWrapper {
           height: 9rem;
         }

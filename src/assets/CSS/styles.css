@@ -1,3 +1,7 @@
+* {
+  font-family: "Inclusive Sans", sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +9,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: #F9F8F8;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #342E37;
 }
 
 img {
@@ -18,20 +34,29 @@ ul {
   padding: 0;
 }
 
-#center {
+.center {
   max-width: 1700px;
   width: 100%;
   margin: auto;
 }
 
 @media screen and (min-width: 320px) {
+  * {
+    font-size: small;
+  }
   #modalPurchase {
+    box-shadow: 0px 0px 67px 44px rgba(0, 0, 0, 0.42);
+    -webkit-box-shadow: 0px 0px 67px 44px rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 0px 0px 67px 44px rgba(0, 0, 0, 0.42);
     display: none;
     width: 20rem;
     height: 16rem;
     border-radius: 10px;
-    border: 1px solid grey;
-    background-color: antiquewhite;
+    border: 1px solid #A9A8AA;
+    background-color: #F9F8F8;
+    overflow-wrap: break-word;
+    text-align: center;
+    padding: 0.5rem;
   }
   #modalPurchase.active {
     position: fixed;
@@ -44,7 +69,7 @@ ul {
   }
   header {
     width: 100%;
-    background-color: #7cb876;
+    background-color: #87adfd;
     position: sticky;
     top: 0;
     transition: height 0.3s ease;
@@ -73,6 +98,14 @@ ul {
     justify-content: flex-end;
     margin: 0;
   }
+  header #ppal #loginRegister {
+    width: 5rem;
+    height: 2rem;
+    background-color: #87adfd;
+    background-color: #304C89;
+    color: #F9F8F8;
+    border: none;
+  }
   header #ppal .hamburger-menu {
     position: relative;
   }
@@ -84,7 +117,7 @@ ul {
   header #ppal .hamburger-menu .hamburger-icon .bar {
     width: 30px;
     height: 3px;
-    background-color: #333;
+    background-color: #342E37;
     margin: 4px 0;
     transition: transform 0.3s ease;
   }
@@ -97,7 +130,7 @@ ul {
     left: -300px;
     width: 160px;
     height: 15rem;
-    background-color: #fff;
+    background-color: #F9F8F8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease-in-out;
     border-radius: 10px;
@@ -111,7 +144,7 @@ ul {
   }
   header #ppal .hamburger-menu .menu-items.active {
     left: -24px;
-    top: 70px;
+    top: 61px;
   }
   header #ppal #imgLogo {
     height: 60%;
@@ -136,7 +169,7 @@ ul {
     width: 10px;
     height: 10px;
     border-radius: 10px;
-    background-color: red;
+    background-color: #FF4365;
   }
   header #ppal #carritoContainer #carrito-items {
     overflow: hidden;
@@ -145,7 +178,7 @@ ul {
     margin: 0.5rem 0 0;
     position: absolute;
     right: 0px;
-    background-color: #fff;
+    background-color: #F9F8F8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     max-height: 0;
     border-radius: 10px;
@@ -160,7 +193,7 @@ ul {
   }
   header #ppal #carritoContainer #carrito-items #productsCart .listProduct {
     min-width: 16rem;
-    border: 1px solid #b1b1b1;
+    border: 1px solid #A9A8AA;
     border-radius: 5px;
     padding: 0 0.5rem;
     margin: 0.5rem 0;
@@ -191,20 +224,19 @@ ul {
   header #ppal #carritoContainer #carrito-items .buttonContainer button {
     width: 5rem;
     height: 2rem;
-    border-radius: 10px;
-    border: 1px solid black;
+    border-radius: 5px;
   }
   header #ppal #carritoContainer #carrito-items .buttonContainer #purchase {
-    background-color: #7ecf77;
+    background-color: #B3D89C;
   }
   header #ppal #carritoContainer #carrito-items .buttonContainer #purchase:active {
-    background-color: #66a360;
+    background-color: #9dbf88;
   }
   header #ppal #carritoContainer #carrito-items .buttonContainer #delete {
-    background-color: #cf7777;
+    background-color: #FF4365;
   }
   header #ppal #carritoContainer #carrito-items .buttonContainer #delete:active {
-    background-color: #a56161;
+    background-color: #d73a56;
   }
   header #ppal #carritoContainer #carrito-items.active {
     overflow-y: auto;
@@ -221,7 +253,7 @@ ul {
   }
   header.scrolling #ppal .hamburger-menu .menu-items.active {
     left: -24px;
-    top: 45px;
+    top: 40px;
   }
   #main #categories {
     margin: 1rem auto;
@@ -235,10 +267,11 @@ ul {
     width: 5rem;
     height: 2rem;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #A9A8AA;
   }
   #main #categories .categoriesButton.selected {
-    background-color: blueviolet;
+    background-color: #5B4E77;
+    color: #F9F8F8;
   }
   #main #cardsContaier {
     display: flex;
@@ -247,8 +280,10 @@ ul {
     align-items: center;
   }
   #main #cardsContaier .card {
-    border: 1px solid salmon;
-    margin: 1rem;
+    border: 1px solid #A9A8AA;
+    border-radius: 10px;
+    margin: 0.5rem;
+    padding-bottom: 0.5rem;
     width: 12rem;
     height: 16rem;
     display: flex;
@@ -260,10 +295,21 @@ ul {
     height: 6rem;
     margin: 1rem 0 0;
   }
+  #main #cardsContaier .card button {
+    width: 5rem;
+    height: 2.5rem;
+    background-color: #B4CEB3;
+  }
+  #main #cardsContaier .card button:active {
+    background-color: #464E47;
+    color: #F9F8F8;
+  }
   #portada {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-wrap: break-word;
+    text-align: center;
   }
   #portada p {
     text-align: center;
@@ -272,7 +318,7 @@ ul {
     margin: 0 1rem;
     position: absolute;
     backdrop-filter: blur(5px);
-    color: whitesmoke;
+    color: #F9F8F8;
     text-indent: 10px;
     z-index: 1;
   }
@@ -306,7 +352,7 @@ ul {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid #A9A8AA;
     border-radius: 15px;
     padding: 10px;
   }
@@ -336,7 +382,7 @@ ul {
     width: 97%;
     font-size: 1rem;
     border-radius: 6px;
-    border: 1px solid black;
+    border: 1px solid #A9A8AA;
   }
   #login .formContainer form .restaurePass {
     width: 100%;
@@ -345,15 +391,15 @@ ul {
     justify-content: flex-end;
   }
   #login .formContainer form #submit {
-    background-color: white;
+    background-color: #F9F8F8;
     margin: 1rem 0;
     width: 6rem;
     height: 3rem;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #A9A8AA;
   }
   #login .formContainer form #submit:active {
-    background-color: grey;
+    background-color: #A9A8AA;
   }
   #aboutUs {
     text-align: center;
@@ -366,20 +412,63 @@ ul {
   #aboutUs h2 {
     margin: 1rem 0;
   }
-  #aboutUs p {
-    font-size: x-small;
-    margin: 0 1rem;
+  footer {
+    padding-top: 1rem;
+    color: #F9F8F8;
+    width: 100%;
+    background-color: #5B4E77;
+  }
+  footer a {
+    color: #87adfd;
+  }
+  footer .center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  footer .center .column {
+    min-width: 20rem;
+  }
+  footer .center .column:last-child p {
+    text-align: center;
+  }
+  footer li {
+    display: flex;
+    align-items: baseline;
+  }
+  footer li a {
+    margin: 1em 0;
+  }
+  footer li .iconFooter {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 1rem;
+  }
+  footer li .iconFooter .icon {
+    color: #F9F8F8;
   }
 }
 @media screen and (min-width: 768px) {
+  * {
+    font-size: medium;
+  }
   #modalPurchase.active {
     top: 40%;
   }
   header #ppal #imgLogo {
     height: 80%;
   }
+  header #ppal .hamburger-menu .menu-items.active {
+    top: 67px;
+  }
   header #carritoContainer #carrito-items #productsCart {
     min-width: 20rem;
+  }
+  header.scrolling #ppal .hamburger-menu .menu-items.active {
+    top: 44px;
+  }
+  #portada p {
+    font-size: larger;
   }
   #main #categories .categoriesButton {
     width: 6.5rem;
@@ -395,8 +484,15 @@ ul {
   #main #cardsContaier .card .imageCardWrapper {
     height: 7rem;
   }
+  #main #cardsContaier .card button {
+    width: 6rem;
+    height: 3rem;
+  }
 }
 @media screen and (min-width: 1080px) {
+  * {
+    font-size: large;
+  }
   header {
     height: 10rem;
   }
@@ -458,13 +554,18 @@ ul {
     left: -24px;
     top: 45px;
   }
+  #portada p {
+    font-size: xx-large;
+    line-height: 2rem;
+  }
   #main #categories .categoriesButton {
     width: 6.5rem;
     height: 3rem;
   }
   #main #cardsContaier .card {
-    width: 17rem;
-    height: 24rem;
+    width: 15rem;
+    height: 20rem;
+    margin: 1rem;
   }
   #main #cardsContaier .card .imageCardWrapper {
     height: 9rem;
