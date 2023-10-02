@@ -35,7 +35,7 @@ ul {
   padding: 0;
 }
 
-#center {
+.center {
   max-width: 1700px;
   width: 100%;
   margin: auto;
@@ -147,7 +147,7 @@ ul {
         }
         .menu-items.active {
           left: -24px;
-          top: 70px;
+          top: 61px;
         }
       }
       #imgLogo {
@@ -260,7 +260,7 @@ ul {
         }
         .menu-items.active {
           left: -24px;
-          top: 45px;
+          top: 40px;
         }
       }
     }
@@ -427,7 +427,45 @@ ul {
     h2 {
       margin: 1rem 0;
     }
-    
+  }
+
+  footer {
+    padding-top: 1rem;
+    color: $main-white;
+    width: 100%;
+    background-color: $category-button;
+    a{
+      color:$header;
+    }
+    .center {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .column{
+        min-width: 20rem;
+        &:last-child{
+          p{
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    li {
+      display: flex;
+      align-items: baseline;
+      a{
+        margin: 1em 0;
+      }
+      .iconFooter {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 1rem;
+        .icon{
+          color:$main-white;
+        }
+      }
+    }
   }
 }
 
@@ -439,9 +477,16 @@ ul {
     top: 40%;
   }
   header {
-    #ppal #imgLogo {
-      height: 80%;
-    }
+    #ppal{
+      #imgLogo {
+        height: 80%;
+      }
+      .hamburger-menu{
+        .menu-items.active{
+          top:67px;
+        }
+      }
+    } 
     #carritoContainer {
       #carrito-items {
         #productsCart {
@@ -450,8 +495,17 @@ ul {
       }
     }
   }
-  #portada{
-    p{
+  header.scrolling {
+    #ppal {
+      .hamburger-menu {
+        .menu-items.active {
+          top: 44px;
+        }
+      }
+    }
+  }
+  #portada {
+    p {
       font-size: larger;
     }
   }
@@ -550,9 +604,10 @@ ul {
       }
     }
   }
-  #portada{
-    p{
-      font-size:x-large;
+  #portada {
+    p {
+      font-size: xx-large;
+      line-height: 2rem;
     }
   }
   #main {

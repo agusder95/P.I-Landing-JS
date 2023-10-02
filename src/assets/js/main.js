@@ -286,23 +286,33 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   const pass = document.getElementById("pass").value;
   const storedLogin = localStorage.getItem("login");
   const login = JSON.parse(storedLogin);
-
+  const text = document.createElement("p");
+  
   if (user && pass) {
     if (login) {
       if (user === login.username && pass === login.password) {
-        alert("atroden");
-        window.location.href = "#center";
+        window.location.reload();
+
         login.logedIn = true;
         localStorage.setItem("login", JSON.stringify(login));
         isLogin();
       } else {
-        alert("error pass or login");
+        e.preventDefault();
+        activeModal.classList.add("active");
+        text.innerHTML = "Error pass or login";
+        activeModal.appendChild(text);
       }
     } else {
-      alert("no user registered");
+      e.preventDefault();
+      activeModal.classList.add("active");
+      text.innerHTML = "No user registered";
+      activeModal.appendChild(text);
     }
   } else {
-    alert("complete login");
+    e.preventDefault();
+    activeModal.classList.add("active");
+    text.innerHTML = "Complete login";
+    activeModal.appendChild(text);
   }
 });
 
@@ -314,37 +324,46 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   const userLog = document.getElementById("userLog").value;
   const passLog = document.getElementById("passLog").value;
   const ageConfrim = document.getElementById("ageConfrim").checked;
+  activeModal.classList.add("active");
+  const text = document.createElement("p");
 
   if (fName && lName && email && passLog && userLog && ageConfrim) {
     accountLStorage(userLog, passLog);
-    alert("login successful");
+    text.innerHTML = "login successful";
+    activeModal.appendChild(text);
     isLogin();
     window.location.href = "#center";
   } else {
     e.preventDefault();
     if (!fName) {
-      alert("complete name");
+      text.innerHTML = "Completar Nombre";
+      activeModal.appendChild(text);
       return;
     }
     if (!lName) {
-      alert("complete last name");
+      text.innerHTML = "Completar Apellido";
+      activeModal.appendChild(text);
       return;
     }
     if (!email) {
-      alert("complete email");
+      text.innerHTML = "Completar Email";
+      activeModal.appendChild(text);
       return;
     }
     if (!userLog) {
-      alert("complete user");
+      text.innerHTML = "Completar UserName";
+      activeModal.appendChild(text);
       return;
     }
 
     if (!passLog) {
-      alert("complete pass");
+      text.innerHTML = "Completar Contraseña";
+      activeModal.appendChild(text);
       return;
     }
     if (!ageConfrim) {
-      alert("Check your age");
+      text.innerHTML = "Confirmar Edad";
+      activeModal.appendChild(text);
       return;
     }
   }
@@ -383,28 +402,6 @@ loginRegister.addEventListener("click", () => {
     window.location.href = "#login";
   }
 });
-
-/* const loginRegister = document.getElementById("loginRegister");
-loginRegister.addEventListener("click", () => {
-  const user = document.getElementById("user").value;
-  const pass = document.getElementById("pass").value;
-  const storedLogin = localStorage.getItem("login");
-  const login = JSON.parse(storedLogin);
-  
-  if (user && pass) {
-    if (login) {
-      if (user === login.username && pass === login.password) {
-        window.location.href = "index.html";
-      } else {
-        alert("error pass or login");
-      }
-    } else {
-      alert("no user registered");
-    }
-  } else {
-    alert("complete login");
-  }
-}); */
 
 window.addEventListener("DOMContentLoaded", () => {
   activeAlert();

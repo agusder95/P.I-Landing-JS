@@ -6,6 +6,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap"
       rel="stylesheet"
     />
@@ -25,10 +32,10 @@
               <div class="bar"></div>
             </div>
             <ul class="menu-items">
-              <li><a href="#">Portada</a></li>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Productos</a></li>
-              <li><a href="#">Nosotros</a></li>
+              <li><a href="#portada">Portada</a></li>
+              <li><a href="#productos">Productos</a></li>
+              <li><a href="#login">Login</a></li>
+              <li><a href="#aboutUs">Nosotros</a></li>
             </ul>
           </div>
         </div>
@@ -62,15 +69,15 @@
       <!-- Desktop navBar -->
       <nav id="desktop">
         <ul>
-          <li>Portada</li>
-          <li>Login</li>
-          <li>Productos</li>
-          <li>Nosotros</li>
+          <li><a href="#portada">Portada</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#login">Login</a></li>
+          <li><a href="#aboutUs">Nosotros</a></li>
         </ul>
       </nav>
     </header>
 
-    <div id="center">
+    <div class="center">
       <div id="main">
         <section id="portada">
           <p>
@@ -162,6 +169,67 @@
         </section>
       </div>
     </div>
+    <footer>
+      <div class="center">
+        <div class="column">
+          <ul>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <p>Contacto: <a>PokeShop@gmail.com</a></p>
+            </li>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-solid fa-house icon"></i>
+              </div>
+              <p>Direccion: calle falsa 123</p>
+            </li>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <p>C.P: x4352</p>
+            </li>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <p>Telefono: 543-543228</p>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <ul>
+            <li>
+              <p>Desarrollado por</p>
+            </li>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <p>Agustin De Robles</p>
+            </li>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-brands fa-linkedin"></i>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/agustin-de-robles-62a965214/"
+                target="_blank"
+                >Linkedin</a
+              >
+            </li>
+            <li>
+              <div class="iconFooter">
+                <i class="fa-brands fa-github"></i>
+              </div>
+              <a href="https://github.com/agusder95" target="_blank">Github</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
     <div id="modalPurchase"></div>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/Products.js"></script>
